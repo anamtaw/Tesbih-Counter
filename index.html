@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tesbih Counter</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: none; /* Kein Hintergrund */
+    }
+
+    .tesbih-container {
+      background-color: #6F4E37; /* Braun (#6F4E37) */
+      border-radius: 15px;
+      width: 300px;
+      height: 400px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+      color: white;
+    }
+
+    .counter {
+      font-size: 80px;
+      font-weight: bold;
+      margin-bottom: 40px;
+    }
+
+    /* Großer Knopf unten */
+    .btn-large {
+      background-color: #AD937C; /* Knopf Hintergrundfarbe */
+      color: white;
+      border: none;
+      width: 120px;
+      height: 120px;
+      font-size: 24px;
+      border-radius: 50%;
+      cursor: pointer;
+      position: absolute;
+      bottom: 20px;
+      text-align: center;
+      line-height: 120px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+      transition: 0.3s;
+    }
+
+    .btn-large:hover {
+      background-color: #C5B2A0; /* Hellere Version der Knopffarbe */
+    }
+
+    /* Kleine runde Tasten oben */
+    .btn-small {
+      background-color: #AD937C; /* Knopf Hintergrundfarbe */
+      color: white;
+      border: none;
+      width: 50px;
+      height: 50px;
+      font-size: 16px;
+      border-radius: 50%;
+      cursor: pointer;
+      position: absolute;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+      transition: 0.3s;
+    }
+
+    .btn-small:hover {
+      background-color: #C5B2A0; /* Hellere Version der Knopffarbe */
+    }
+
+    /* Positionen der Buttons */
+    .btn-reset {
+      top: 20px;
+      right: 20px;
+    }
+
+    .btn-decrement {
+      top: 20px;
+      left: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="tesbih-container">
+    <div class="counter" id="counter">0</div>
+    
+    <!-- Knöpfe -->
+    <button class="btn-small btn-decrement" id="decrement-btn">-</button>
+    <button class="btn-small btn-reset" id="reset-btn">R</button>
+    <button class="btn-large" id="increment-btn">count</button>
+  </div>
+
+  <script>
+    // JavaScript Code
+    let count = 0;
+
+    // Elemente holen
+    const counterDisplay = document.getElementById("counter");
+    const incrementBtn = document.getElementById("increment-btn");
+    const decrementBtn = document.getElementById("decrement-btn");
+    const resetBtn = document.getElementById("reset-btn");
+
+    // Funktionen
+    const updateCounter = () => {
+      counterDisplay.innerText = count;
+    };
+
+    incrementBtn.addEventListener("click", () => {
+      count++;
+      updateCounter();
+    });
+
+    decrementBtn.addEventListener("click", () => {
+      if (count > 0) {
+        count--;
+      }
+      updateCounter();
+    });
+
+    resetBtn.addEventListener("click", () => {
+      count = 0;
+      updateCounter();
+    });
+  </script>
+</body>
+</html>
